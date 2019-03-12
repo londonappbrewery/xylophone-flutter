@@ -5,7 +5,7 @@
 
 ## Our Goal
 
-In this tutorial we will be diving into more Dart programming concepts such as lists, loops, functions and much much more. By the end of this modules, you should be conformable using Flutter packages and building repeated widgets.
+In this tutorial we will be diving into more Dart programming concepts and learning how to use open source Flutter packages. By the end of this module, you should be conformable using Flutter packages and building repeated widgets.
 
 
 ## What you will create
