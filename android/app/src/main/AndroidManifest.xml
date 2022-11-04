@@ -16,9 +16,9 @@
         android:label="xylophone"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="${applicationName}"
-            android:exported="true"
+            android:name=".MainActivity"
             android:launchMode="singleTop"
+            android:exported="true"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
             android:hardwareAccelerated="true"
