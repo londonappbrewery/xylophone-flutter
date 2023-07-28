@@ -1,14 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-void main() => runApp(XylophoneApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(XylophoneApp());
+}
+
+// TO DO: Fix bug - error
+// "Unhandled Exception: Bad state: Future already completed" when note clicked.
 
 class XylophoneApp extends StatelessWidget {
   final player = AudioPlayer();
-  playSound(int note){
+  void playSound(int note) {
     player.setSource(AssetSource('note$note.wav'));
     player.play(DeviceFileSource('note$note.wav'));
+    player.stop();
     print('note$note played.');
+  }
+
+  // Note: Could also return Widget instead of Expanded
+  Expanded buildKey({Color color = Colors.white, int soundNumber = 1 }){
+    return Expanded(
+      child: TextButton (
+        onPressed: (){
+          playSound(soundNumber);
+        },
+        style: TextButton.styleFrom(
+            backgroundColor: color,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.zero))),
+        child: Text(""),
+          ),
+      );
   }
 
   @override
@@ -17,49 +40,15 @@ class XylophoneApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child:Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
-                onPressed: (){
-                    playSound(1);
-                },
-                child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
-                  onPressed: (){
-                    playSound(2);
-                  },
-                  child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.yellow)),
-                  onPressed: (){
-                    playSound(3);
-                  },
-                  child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.lightGreen)),
-                  onPressed: (){
-                    playSound(4);
-                  },
-                  child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.teal)),
-                  onPressed: (){
-                    playSound(5);
-                  },
-                  child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
-                  onPressed: (){
-                    playSound(6);
-                  },
-                  child: Text('')),
-              TextButton (
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.purple)),
-                  onPressed: (){
-                    playSound(7);
-                  },
-                  child: Text('')),
+              buildKey(color: Colors.red, soundNumber: 1), // Expanded Widgets
+              buildKey(color: Colors.orange, soundNumber: 2),
+              buildKey(color: Colors.yellow, soundNumber: 3),
+              buildKey(color: Colors.green, soundNumber: 4),
+              buildKey(color: Colors.teal, soundNumber: 5),
+              buildKey(color: Colors.blue, soundNumber: 6),
+              buildKey(color: Colors.purple, soundNumber: 7),
             ],
           ),
           ),
