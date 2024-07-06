@@ -11,6 +11,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
+  english_words: ^4.0.0
+  # audioplayers: ^1.0.1
+  # flutter_sound: ^9.2.13
+  # assets_audio_player: ^3.0.5
+  just_audio: ^0.9.28
+  gradient_app_bar: ^0.1.3
   # Use Audioplayers dependency version 0.17.4
 
 dev_dependencies:
@@ -23,4 +29,12 @@ flutter:
 
   assets:
     - assets/
+
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
+    - family: Source_Sans_Pro
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.ttf
 
